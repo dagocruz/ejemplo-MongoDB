@@ -1,4 +1,4 @@
-# Práctica 1: Introducción Rest API con NodeJS y ExpressJS
+# Práctica 2: Introducción Rest API con NodeJS, ExpressJS, y MongoDB
 
-Ejemplo básico de cómo implementar un **Rest-API** utilizando NodeJS y ExpressJS.
+Ejemplo básico de cómo implementar un **Rest-API** utilizando NodeJS, ExpressJS y MongoDB.
 
