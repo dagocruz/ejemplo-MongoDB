@@ -4,7 +4,9 @@ var router = express.Router();
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 
+var modelos = require('../models/Libro');
 var LibrosCtrl = require('../controllers/LibrosCtrl');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

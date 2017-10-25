@@ -10,6 +10,16 @@ var users = require('./routes/users');
 
 var app = express();
 
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/libros', function(err,res){
+	if(err){
+		throw err;
+	}
+
+	console.log('Conectado a la base de datos');
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

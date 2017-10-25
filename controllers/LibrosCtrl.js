@@ -1,3 +1,5 @@
+var mongoose = require('mongoose');
+var Libro = mongoose.model('Libro');
 
 var libros = [
 	{
@@ -19,14 +21,35 @@ var libros = [
 
 exports.getLibros = function(req,res,next){
 	console.log('GET /libros');
-	res.status(200).jsonp(libros);
+	//res.status(200).jsonp(libros);
+	Libro.find({autor: 'Charles Bukowsky'}, function(err,libros){
+		if(err){
+			res.send(500, err.message);
+		}
+		else{
+			console.log('GET /libros');
+			res.status(200).jsonp(libros);	
+		}
+	});
 };
 
 exports.addLibro = function(req,res,next){
 	// req.body trae la información del post
 	console.log('POST /libros');
-	libros.push(req.body);
-	res.status(200).jsonp(libros);
+	
+	var libro = new Libro({
+		titulo : req.body.titulo,
+		anio : req.body.anio,
+		autor : req.body.autor,
+		genero : req.body.genero 
+	});
+
+	libro.save(function(err,libro){
+		if(err) return res.send(500,err.message);
+		res.status(200).jsonp(libro);
+	});
+	//libros.push(req.body);
+	//res.status(200).jsonp(libros);
 };
 
 exports.getById = function(req,res,next){
